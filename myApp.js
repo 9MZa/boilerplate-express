@@ -22,7 +22,12 @@ app.get('/json', (req, res) => {
   }
 });
 
-
+app.get('/now', (req, res, next) => {
+  req.time = new Date();
+  next()
+}, (req, res) => {
+  res.json({ "time": req.time })
+})
 
 app.get('/', (req, res) => {
   res.sendFile(absolutePath);
