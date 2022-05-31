@@ -1,8 +1,10 @@
 let express = require('express');
 let app = express();
-
+let bodyParser = require('body-parser');
 
 let absolutePath = __dirname + "/views/index.html";
+
+bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 app.use('/public', express.static('public'))
@@ -12,6 +14,7 @@ const Logger = (req, res, next) => {
   next();
 }
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(Logger)
 
 app.get('/json', (req, res) => {
