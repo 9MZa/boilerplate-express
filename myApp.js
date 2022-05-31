@@ -33,6 +33,11 @@ app.get('/', (req, res) => {
   res.sendFile(absolutePath);
 });
 
+app.get('/:word/echo', (req, res) => {
+  const { word } = req.params;
+  res.json({ "echo": word })
+})
+
 console.log('Hello World');
 
 
