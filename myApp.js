@@ -36,6 +36,11 @@ app.get('/', (req, res) => {
   res.sendFile(absolutePath);
 });
 
+app.post('/name', (req, res) => {
+  let name = `${req.body.first} ${req.body.last}`;
+  res.json({ "name": name })
+});
+
 app.get('/:word/echo', (req, res) => {
   const { word } = req.params;
   res.json({ "echo": word })
